@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: seheo <seheo@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 20:06:34 by seheo             #+#    #+#             */
-/*   Updated: 2022/07/02 22:02:32 by seheo            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
 
 char	*file_save(char *result)
@@ -71,10 +59,10 @@ char	*get_next_line(int fd)
 	int				count;
 	char			*buf;
 	char			*result;
-	static char		*file_text[257];
+	static char		*file_text[256];
 
 	count = 1;
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 257)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 256)
 		return (0);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
