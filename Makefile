@@ -17,7 +17,7 @@ $(NAME) : $(OBJS)
 	$(LIBC) $(NAME) $(OBJS)
 
 %.o	: %.c
-	gcc $(FLAGS) -D BUFFER_SIZE=13 -c $^  -o $@
+	gcc -D BUFFER_SIZE=13 -c $^  -o $@
 
 clean	:
 		rm -f $(OBJS)

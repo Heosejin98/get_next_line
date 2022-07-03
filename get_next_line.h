@@ -6,7 +6,7 @@
 /*   By: seheo <seheo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:50:19 by seheo             #+#    #+#             */
-/*   Updated: 2022/07/03 13:56:01 by seheo            ###   ########.fr       */
+/*   Updated: 2022/07/03 17:05:24 by seheo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
 
 char	*get_next_line(int fd);
 size_t  ft_strlen(const char *str);
