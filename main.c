@@ -7,17 +7,20 @@ int	main(void)
 	int fd;
 	char *line;
   	fd = 0;
-	fd = open("first.txt", O_RDONLY);
-	
+	fd = open("test/first.txt", O_RDONLY);
+	fd = open("123.txt", O_RDONLY);	
     for(int i=0; i<=3; i++)
     {
 		char *line = get_next_line(fd);
         if (!line)
             break;
 		//printf("%p\n", line);
-		printf("%s", line);
+		// char c = 0; read(fd, &c, 1);
+		int res = printf("%s", line);
+		printf("res %d\n", res);
 		free(line);		
 	}
+	/*
 	printf("\n");
 	printf("\n");
 	fd = open("test/second.txt", O_RDONLY);
@@ -39,10 +42,11 @@ int	main(void)
         if (!line)
             break;
 		//printf("%p\n", line);
+	
 		printf("%s", line);
 		free(line);		
 	}
 	//system("leaks a.out");
-
+*/
 	return (0);
 } 

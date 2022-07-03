@@ -6,7 +6,7 @@
 /*   By: seheo <seheo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:50:19 by seheo             #+#    #+#             */
-/*   Updated: 2022/07/02 20:55:53 by seheo            ###   ########.fr       */
+/*   Updated: 2022/07/03 13:56:01 by seheo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ char	*get_next_line(int fd);
 size_t  ft_strlen(const char *str);
 char    *ft_strchr(const char *str, int c);
 char	*s1_init(char *s1);
-char	*ft_strjoin(char *s1, char const *s2);
-char	*file_save(char *result);
+char	*ft_strjoin(char *s1, char *s2);
+char	*next_line(char *result);
 char	*get_line(char *file_text);
-
 
 #endif 

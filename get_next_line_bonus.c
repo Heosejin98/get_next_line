@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seheo <seheo@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/03 13:59:16 by seheo             #+#    #+#             */
+/*   Updated: 2022/07/03 13:59:18 by seheo            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-char	*file_save(char *result)
+char	*next_line(char *result)
 {
 	int		i;
 	int		c;
@@ -29,57 +41,54 @@ char	*file_save(char *result)
 char	*get_line(char *file_text)
 {
 	int		i;
-	char	*s;
+	char	*tmp;
 
 	i = 0;
 	if (!file_text[i])
 		return (NULL);
 	while (file_text[i] && file_text[i] != '\n')
 		i++;
-	s = (char *)malloc(sizeof(char) * (i + 2));
-	if (!s)
+	tmp = (char *)malloc(sizeof(char) * (i + 2));
+	if (!tmp)
 		return (NULL);
 	i = 0;
 	while (file_text[i] && file_text[i] != '\n')
 	{
-		s[i] = file_text[i];
+		tmp[i] = file_text[i];
 		i++;
 	}
 	if (file_text[i] == '\n')
 	{
-		s[i] = file_text[i];
+		tmp[i] = file_text[i];
 		i++;
 	}
-	s[i] = '\0';
-	return (s);
+	tmp[i] = '\0';
+	return (tmp);
 }
 
 char	*get_next_line(int fd)
 {
 	int				count;
-	char			*buf;
+	char			buf[BUFFER_SIZE + 1];
 	char			*result;
-	static char		*file_text[256];
+	static char		*file_text[2560];
 
 	count = 1;
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 256)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 2560)
 		return (0);
-	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buf)
-		return (NULL);
 	while (count != 0)
 	{
 		count = read(fd, buf, BUFFER_SIZE);
 		if (count == -1)
-		{
-			free(buf);
 			return (NULL);
-		}
 		buf[count] = '\0';
 		file_text[fd] = ft_strjoin(file_text[fd], buf);
+		if (!file_text[fd])
+			return (NULL);
+		if (ft_strchr(file_text[fd], '\n'))
+			break;
 	}
 	result = get_line(file_text[fd]);
-	file_text[fd] = file_save(file_text[fd]);
-	free(buf);
+	file_text[fd] = next_line(file_text[fd]);
 	return (result);
 }
