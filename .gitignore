@@ -6,3 +6,4 @@ a.out
 # -g option directory for debuging
 *.dSYM
 
+.DS_Store
